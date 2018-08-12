@@ -1,11 +1,10 @@
 {
-  "name": "my-app",
-  "version": "0.1.0",
   "private": true,
   "dependencies": {
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
-    "react-scripts-ts": "2.17.0"
+    "react-scripts-ts": "2.17.0",
+    "word-list": "^2.0.0"
   },
   "scripts": {
     "start": "react-scripts-ts start",
@@ -14,10 +13,13 @@
     "eject": "react-scripts-ts eject"
   },
   "devDependencies": {
-    "@types/jest": "^23.3.1",
-    "@types/node": "^10.5.7",
     "@types/react": "^16.4.8",
     "@types/react-dom": "^16.0.7",
+    "@types/webpack-env": "^1.13.6",
     "typescript": "^3.0.1"
+  },
+  "prettier": {
+    "semi": false,
+    "singleQuote": true
   }
 }
