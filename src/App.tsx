@@ -6,9 +6,9 @@ import RandomLetter from './RandomLetter'
 
 export default class App extends React.Component<
   {},
-  { letters: string[]; words: string[] }
+  { letters: string[]; score: number; words: string[] }
 > {
-  state = { letters: [] as string[], words: [] as string[] }
+  state = { letters: [] as string[], score: 0, words: [] as string[] }
 
   componentDidMount() {
     fetch(words)
@@ -20,6 +20,8 @@ export default class App extends React.Component<
     if (this.state.letters) {
       return (
         <>
+          {this.state.score}
+
           <div className="letters">
             {this.state.letters.map((letter, index) => (
               <Letter key={index}>{letter}</Letter>
@@ -31,17 +33,15 @@ export default class App extends React.Component<
               <RandomLetter
                 key={index}
                 onClick={letter => {
-                  this.setState(({ letters, words }) => {
+                  this.setState(({ letters, score, words }) => {
                     const word = letters
                       .concat(letter)
                       .join('')
                       .toLowerCase()
 
-                    return {
-                      letters: words.includes(word)
-                        ? []
-                        : letters.concat(letter)
-                    }
+                    return words.includes(word)
+                      ? { letters: [], score: score + word.length }
+                      : { letters: letters.concat(letter), score: score }
                   })
                 }}
               />
